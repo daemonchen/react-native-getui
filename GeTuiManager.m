@@ -37,7 +37,8 @@ static NSString *_ClientId = @"";
 
 - (void)handleRemoteNotificationReceived:(NSString *)payloadMsg withRoot:(RCTRootView *)rootView
 {
-  GeTuiManager *geTuiManager = rootView.bridge.modules[RCTBridgeModuleNameForClass([GeTuiManager class])];
+  GeTuiManager *geTuiManager = [rootView.bridge moduleForClass:[GeTuiManager class]];
+  // GeTuiManager *geTuiManager = rootView.bridge.modules[RCTBridgeModuleNameForClass([GeTuiManager class])];
   [geTuiManager.bridge.eventDispatcher sendAppEventWithName:@"notify"
                                            body:payloadMsg];
 }
